@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+  web:
+    build: .
+    volumes:
+      - .:/app/
+    command: >
+      bash -c "python manage.py migrate 
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

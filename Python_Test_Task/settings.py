@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +78,17 @@ WSGI_APPLICATION = 'Python_Test_Task.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get('POSTGRES_ENGINE'),
+
+        'NAME': os.environ.get('POSTGRES_NAME'),
+
+        'USER': os.environ.get('POSTGRES_USER'),
+
+        'PASSWORD': os.environ.get('POSTGRES_PASS'),
+
+        'HOST': os.environ.get('POSTGRES_HOST'),
+
+        'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
 
