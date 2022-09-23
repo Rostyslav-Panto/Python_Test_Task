@@ -1,0 +1,7 @@
+.gitignore
+.idea
+.dockerignore
+venv
+htmlcov
+README.md
+.pre-commit-config.yml
