@@ -9,7 +9,7 @@ from api.models import Post, Feedback
 from api.serializers import PostSerializer, FeedbackSerializer, UserSerializer
 
 
-class PostView(viewsets.ViewSet):
+class PostsView(viewsets.ViewSet):
     serializer_class = PostSerializer
 
     def get(self, request):
