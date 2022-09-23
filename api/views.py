@@ -1,11 +1,12 @@
 from itertools import groupby
 
 from rest_framework import viewsets, status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from collections import Counter
 
 from api.models import Post, Feedback
-from api.serializers import PostSerializer, FeedbackSerializer
+from api.serializers import PostSerializer, FeedbackSerializer, UserSerializer
 
 
 class PostView(viewsets.ViewSet):
@@ -73,3 +74,14 @@ class AnalyticsView(viewsets.ViewSet):
             )
 
         return Response(analytics)
+
+
+class RegisterView(viewsets.ViewSet):
+    permission_classes = [AllowAny]
+    serializer_class = UserSerializer
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
