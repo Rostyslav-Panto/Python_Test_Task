@@ -12,12 +12,12 @@ from api.serializers import PostSerializer, FeedbackSerializer, UserSerializer
 class PostsView(viewsets.ViewSet):
     serializer_class = PostSerializer
 
-    def get(self, request):
+    def list(self, request):
         queryset = Post.objects.filter(author__post=self.request.user.id)
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def post(self, request):
+    def create(self, request):
         post_data = {
             **request.data.dict(),
             "author": f"{self.request.user.id}"
@@ -37,11 +37,12 @@ class FeedbackView(viewsets.ViewSet):
         serializer = FeedbackSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def post(self, request):
+    def create(self, request):
         feedback_data = {
             **request.data.dict(),
             "author": f"{self.request.user.id}"
         }
+
         serializer = FeedbackSerializer(data=feedback_data)
         if serializer.is_valid():
             serializer.save()
@@ -80,7 +81,7 @@ class RegisterView(viewsets.ViewSet):
     permission_classes = [AllowAny]
     serializer_class = UserSerializer
 
-    def post(self, request):
+    def create(self, request):
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
