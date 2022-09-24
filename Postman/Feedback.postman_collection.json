@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "1762622d-418e-4889-8c2d-e6494149501d",
+		"name": "Feedback",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13893310"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/feedback/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDM0MTEzLCJpYXQiOjE2NjQwMzM1MTMsImp0aSI6IjU0YzRlNjdjYzliMTQxZGM5NDgzNTlkYWE0ODU0OGE5IiwidXNlcl9pZCI6N30.I_al04eZMZuzSR9e4SaglSzu-a9I-DMZybwwl35VPM0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/feedback/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"feedback",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/feedback/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDM0MTEzLCJpYXQiOjE2NjQwMzM1MTMsImp0aSI6IjU0YzRlNjdjYzliMTQxZGM5NDgzNTlkYWE0ODU0OGE5IiwidXNlcl9pZCI6N30.I_al04eZMZuzSR9e4SaglSzu-a9I-DMZybwwl35VPM0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "post_id",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "positive",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/feedback/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"feedback",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
